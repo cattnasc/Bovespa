@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang=" pt-BR\>
+<head>
+ <meta charset=\UTF-8\ />
+ <meta name=\viewport\ content=\width=device-width initial-scale=1.0\ />
+ <title>Projeto Matemática 3º ano - Bovespa</title>
+ <link rel="stylesheet" href="style.css" defer>
+</head>
+
+<body>
+
+ <header>
+ <div class=\container nav-inner\>
+ <div class=\logo\>Bovespa 3º Ano</div>
+ <nav aria-label=\Navegação principal\>
+ <ul>
+ <li><a href=\#home\>Home</a></li>
+ <li><a href=\#investimentos\>Investimentos</a></li>
+ <li><a href=\#perfil-sociedade\>Perfil</a></li>
+ <li><a href=\#mercado-global\>Mercado Global</a></li>
+ <li><a href=\#mecanismos\>Capital</a></li>
+ <li><a href=\#profissoes\>Profissões</a></li>
+ </ul>
+ </nav>
+ </div>
+ </header>
+
+ <main class=\container\>
+ <section id=\home\ class=\hero\>
+ <div class=\hero-wrapper\>
+ <div>
+ <h1>Bem-vindo ao guia de Bovespa para o 3º ano</h1>
+ <p>Este projeto é um passeio descontraído e educativo pelo mundo da Bolsa de Valores brasileira. Se você nunca ouviu falar de ações, BDRs ou índice Ibovespa, aqui é o lugar certo!</p>
+ <ul>
+ <li> O que é a Bovespa e por que ela importa na vida do brasileiro</li>
+ <li> Como o mercado financeiro se relaciona com matemática e economia</li>
+ <li> Termos básicos (Alta, Baixa, risco, rendimento, etc.)</li>
+ </ul>
+ <p>Vamos navegar juntos com um tom leve, exemplos, tópicos e imagens de alta qualidade (placeholder).</p>
+ </div>
+
+ <div class=\placeholder\ aria-label=\Espaço reservado para imagem de alta qualidade\>
+ Imagem de alta qualidade (placeholder)
+ </div>
+ </div>
+ </section>
+
+ <section id=\investimentos\ class=\section-card load-section\>
+ <div class=\placeholder\>Carregando conteúdo de Investimentos...</div>
+ </section>
+
+ <section id=\perfil-sociedade\ class=\section-card load-section\>
+ <div class=\placeholder\>Carregando conteúdo de Perfil e Sociedade...</div>
+ </section>
+
+ <section id=\mercado-global\ class=\section-card load-section\>
+ <div class=\placeholder\>Carregando conteúdo de Mercado Global...</div>
+ </section>
+
+ <section id=\mecanismos\ class=\section-card load-section\>
+ <div class=\placeholder\>Carregando conteúdo de Mecanismos de Capital...</div>
+ </section>
+
+ <section id=\profissoes\ class=\section-card load-section\>
+ <div class=\placeholder\>Carregando conteúdo de Profissões...</div>
+ </section>
+ </main>
+
+ <footer>
+ <p>Referências bibliográficas: ANBIMA, B3, Banco Central, e materiais didáticos.</p>
+ <div class=\bottom-logos\>
+ <div class=\logo-item\>UNASP</div>
+ <div class=\logo-item\>Marcos Matico</div>
+ <div class=\logo-item\>Bahia</div>
+ </div>
+ </footer>
+
+ <script>
+ const sections = [
+ { id: 'investimentos', path: 'investimentos/investimentos.html' },
+ { id: 'perfil-sociedade', path: 'perfil/perfil.html' },
+ { id: 'mercado-global', path: 'mercado/mercado.html' },
+ { id: 'mecanismos', path: 'capital/capital.html' },
+ { id: 'profissoes', path: 'profissoes/profissoes.html' }
+ ];
+
+ sections.forEach(async ({ id, path }) => {
+ try {
+ const res = await fetch(path);
+ const html = res.ok ? await res.text() : '<p>falha ao carregar; tente atualizar</p>';
+ document.getElementById(id).innerHTML = html;
+ } catch (err) {
+ document.getElementById(id).innerHTML = '<p>Erro de rede na carga da seção.</p>';
+ }
+ });
+ </script>
+</body>
+</html>
