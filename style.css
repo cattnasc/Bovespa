@@ -1,151 +1,185 @@
-﻿* { box-sizing: border-box; }
+﻿:root {
+    --azul-marinho: #002344;
+    --cinza-escuro: #333333;
+    --cinza-medio: #718096;
+    --cinza-claro: #f4f7f6;
+    --branco: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-  background: #f4f6f8;
-  color: #1f2937;
-  line-height: 1.6;
-  scroll-behavior: smooth;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--cinza-claro);
+    color: var(--cinza-escuro);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
-.container {
-  width: min(1100px, 90%);
-  margin: 0 auto;
-  padding: 1.5rem 0;
+
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
 }
-header {
-  background: linear-gradient(135deg, #0f2f5f, #1c4e8a);
-  color: #fff;
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+.main-header {
+    background-color: var(--azul-marinho);
+    color: var(--branco);
+    padding: 80px 0;
+    text-align: center;
+    margin-bottom: 40px;
 }
-.nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+
+.main-header h1 {
+    margin: 0;
+    font-size: 2.8rem;
 }
-.logo {
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: 0.04em;
+
+.card {
+    background: var(--branco);
+    padding: 45px;
+    margin-bottom: 35px; 
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 6px solid var(--azul-marinho);
 }
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+
+h2 {
+    color: var(--azul-marinho);
+    margin-top: 0;
+    font-size: 1.9rem;
+    margin-bottom: 20px;
 }
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.95rem;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  padding: 0.45rem 0.75rem;
-  transition: all 0.2s ease;
+
+/* Layout 50/50 - A mágica da inversão está aqui */
+.split-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
-nav a:hover,
-nav a:focus-visible {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.3);
+
+/* Classe que inverte a ordem: Texto primeiro, Imagem depois */
+.row-reverse {
+    flex-direction: row-reverse;
 }
-main {
-  margin-top: 1.5rem;
+
+.split-image {
+    flex: 1;
 }
-.hero {
-  background: #ffffff;
-  border-left: 6px solid #1b8f57;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(92, 98, 112, 0.1);
-  max-width: 100%;
+
+.split-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
 }
-.hero h1 {
-  margin-top: 0;
-  color: #0f2f5f;
-  font-size: clamp(1.5rem, 4vw, 2.4rem);
+
+.split-text {
+    flex: 1;
 }
-.hero p {
-  font-size: 1.05rem;
-  margin: .8rem 0 1rem;
+
+.img-content {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: block;
 }
-.hero ul {
-  margin: 0;
-  padding-left: 1.3rem;
+
+.topic-list {
+    list-style: none;
+    padding: 0;
 }
-.hero li {
-  margin-bottom: .6rem;
+
+.topic-list li {
+    margin-bottom: 18px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 1.1rem;
 }
-.placeholder,
-.placeholder-img {
-  width: 100%;
-  height: auto;
-  min-height: 220px;
-  background: linear-gradient(135deg, #d1d5db 0%, #e5e7eb 100%);
-  border: 2px dashed #9ca3af;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  color: #6b7280;
-  font-weight: 600;
-  margin-top: 1rem;
+
+.topic-list li::before {
+    content: "•";
+    color: var(--azul-marinho);
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -4px;
 }
-.placeholder-img {
-  border: 1px solid #cbd5e1;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-  background: #fff;
-  min-height: auto;
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
 }
-.section-card {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(33, 42, 55, 0.08);
-  border: 1px solid #dde4ee;
+
+@media (max-width: 768px) {
+    .grid-2 { 
+        grid-template-columns: 1fr; 
+    }
+    .split-container {
+        flex-direction: column !important; /* No celular volta a ser empilhado */
+    }
 }
-.section-grid {
-  display: grid;
-  gap: 1rem;
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
 }
-@media (min-width: 900px) {
-  .section-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+
+.styled-table th {
+    background-color: var(--azul-marinho);
+    color: white;
+    text-align: left;
+    padding: 18px;
 }
-footer {
-  margin-top: 2rem;
-  padding: 1.1rem 0;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #475569;
+
+.styled-table td {
+    padding: 18px;
+    border-bottom: 1px solid #eee;
 }
-.bottom-logos {
-  margin-top: 0.8rem;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
+
+.risk-section {
+    border-top-color: #d9534f;
+    background-color: #fffafa;
 }
-.logo-item {
-  min-width: 100px;
-  max-width: 140px;
-  height: 48px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  background: #fff;
-  font-weight: 700;
-  color: #1e293b;
-  font-size: 0.8rem;
+
+.main-footer {
+    background-color: var(--cinza-escuro);
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+    margin-top: 80px;
 }
-@media (max-width: 767px) {
-  nav ul { justify-content: center; }
-  .nav-inner { flex-direction: column; gap: 0.5rem; }
+
+.logo-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.logo-box img {
+    height: 70px;
+    width: auto;
+    display: block;
+}
+
+.logo-preta img {
+    filter: brightness(0);
+}
+
+.refs {
+    font-size: 0.95rem;
+    color: #bdc3c7;
+    margin-top: 25px;
+    font-style: italic;
 }
